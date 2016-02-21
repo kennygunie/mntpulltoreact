@@ -51,7 +51,7 @@ static NSString *MNTPullToReactDefaultViewMsgHasDoneAction = @"Action %d done";
         frame.origin.y = self.bounds.size.height - frame.size.height;
         UILabel *label = [[UILabel alloc] initWithFrame:frame];
         label.backgroundColor = [UIColor clearColor];
-        label.textColor = [UIColor blackColor];
+        label.textColor = [UIColor whiteColor];
         label.textAlignment = NSTextAlignmentCenter;
         label.text = MNTPullToReactDefaultViewMsgNoAction;
         label;
@@ -68,9 +68,10 @@ static NSString *MNTPullToReactDefaultViewMsgHasDoneAction = @"Action %d done";
     }
 }
 
-- (void)willDoAction:(NSInteger)action
+- (BOOL)willDoAction:(NSInteger)action
 {
     self.actionLabel.text = [NSString stringWithFormat:MNTPullToReactDefaultViewMsgDoingAction, action];
+    return YES;
 }
 
 - (void)didDoAction:(NSInteger)action

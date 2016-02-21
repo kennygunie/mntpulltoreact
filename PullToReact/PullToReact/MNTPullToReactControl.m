@@ -313,15 +313,22 @@ CGFloat currentY = self.scrollView.contentOffset.y; \
 
 - (void)doWithLocation:(CGPoint)location
 {
+//    if (location.y >= self.threshold) {
+//        BOOL shouldSendActions = [self privateBeginAction:self.triggeredAction];
+//        self.triggeredAction = 0;
+//        if (shouldSendActions) {
+//            [self sendActionsForControlEvents:UIControlEventValueChanged];
+//        } else {
+//            [self endAction:self.action];
+//        }
+//    }
     if (location.y >= self.threshold) {
-        BOOL shouldSendActions = [self privateBeginAction:self.triggeredAction];
-        self.triggeredAction = 0;
-        if (shouldSendActions) {
-            [self sendActionsForControlEvents:UIControlEventValueChanged];
-        } else {
-            [self endAction:self.action];
-        }
+        self.action = self.triggeredAction;
+        [self endAction:self.action];
     }
+    
+    
+   
 }
 
 @end
